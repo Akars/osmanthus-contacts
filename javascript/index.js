@@ -17,7 +17,7 @@ function * generateContacts () {
   let index = 1
 
   while (index <= numContacts) {
-    yield [`name-${index}`, `email-${index}'@domain.tld`]
+    yield [`name-${index}`, `email-${index}@domain.tld`]
     index++
   }
 }
