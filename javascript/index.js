@@ -36,15 +36,11 @@ const migrate = async (db) => {
 
 const insertContacts = async (db) => {
   console.log('Inserting contacts ...')
-  const chunkSize = 1000
 
   const contacts = generateContacts()
 
-  for (let i = 0; i < contacts.length; i += chunkSize) {
-    const chunk = contacts.slice(i, i + chunkSize)
-    for (const contact of chunk) {
-      const res = await db.run('INSERT INTO contacts (name, email) VALUES (?, ?)', contact)
-    }
+  for (const contact of contacts) {
+    const res = await db.run('INSERT INTO contacts (name, email) VALUES (?, ?)', contact)
   }
 
   console.log('Done inserting contacts')
